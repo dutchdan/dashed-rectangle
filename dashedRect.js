@@ -1,34 +1,23 @@
 dashRect = function (x, y, w, h, d) {
-  //draw top
+  push();
+  translate(x, y);
+  //draw top and bottom
   for (let i = 0; i < w; i += d * 2) {
-    let end = x + i + d;
+    let end = i + d;
     if (end > w) {
       end = w;
     }
-    line(i + x, y, end, y);
+    line(i, 0, end, 0);
+    line(i, h, end, h);
   }
-  //draw right
+  //draw sides
   for (let i = 0; i < h; i += d * 2) {
-    let end = i + y + d;
+    let end = i + d;
     if (end > h) {
       end = h;
     }
-    line(w, i + y, w, end);
+    line(w, i, w, end);
+    line(0, i, 0, end);
   }
-  //draw bottom
-  for (let i = 0; i < w; i += d * 2) {
-    let end = i + x + d;
-    if (end > w) {
-      end = w;
-    }
-    line(i + x, h, end, h);
-  }
-  //draw left
-  for (let i = 0; i < h; i += d * 2) {
-    let end = i + x + d;
-    if (end > h) {
-      end = h;
-    }
-    line(x, i + y, x, end);
-  }
+  pop();
 }
